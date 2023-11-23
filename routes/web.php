@@ -73,6 +73,7 @@ use Illuminate\Support\Facades\Route;
 // some changes from us
 // Check by kashan 
 // Aiman Work
+// Kashan TEsting
 Route::get('/Super-admin-login', [MainSuperAdminController::class, 'Super_admin_login'])->name('Super-admin-login');
 Route::post('/super-admin-logged', [MainSuperAdminController::class, 'super_admin_logged'])->name('super-admin-logged');
 Route::get('/logout', [MainSuperAdminController::class, 'logout'])->name('logout');
