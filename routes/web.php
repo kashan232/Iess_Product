@@ -19,6 +19,7 @@ use App\Http\Controllers\PromoteStudentController;
 use App\Http\Controllers\CampusTimeTableController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\AccountsController;
+use App\Http\Controllers\BatchCreationController;
 use App\Http\Controllers\CampusStudentController;
 use App\Http\Controllers\CampusStudentDiaryAssignmentController;
 use App\Http\Controllers\CampusTeacherController;
@@ -44,9 +45,13 @@ use App\Models\campus;
 use App\Http\Controllers\ManageTeacherController;
 use App\Http\Controllers\CampusFormerController;
 use App\Http\Controllers\CampusTeacherSalaryController;
+use App\Http\Controllers\DegreeCreationController;
 use App\Http\Controllers\LibraryBookController;
 use App\Http\Controllers\NewProjectController;
+use App\Http\Controllers\ProgramManagementController;
 use App\Http\Controllers\ScreenReadyController;
+use App\Http\Controllers\SemesterConfigController;
+use App\Http\Controllers\SubjectManagementController;
 use App\Models\Institute;
 use Illuminate\Support\Facades\Route;
 
@@ -566,5 +571,14 @@ Route::get('/Campuspayrollmanagement',[ScreenReadyController::class,'Campuspayro
 Route::get('/uni-advance-loan',[ScreenReadyController::class,'uni_advance_loan'])->name('uni-advance-loan');
 Route::get('/uni-Annual-increments',[ScreenReadyController::class,'uni_Annual_increments'])->name('uni-Annual-increments');
 Route::get('/uni-block-salary',[ScreenReadyController::class,'uni_block_salary'])->name('uni-block-salary');
+
+
+// route for the degree and program management
+Route::get('/add-degree-creation',[DegreeCreationController::class,'add_degree_creation'])->name('add-degree-creation');
+Route::get('/add-program-manage',[ProgramManagementController::class,'add_program_manage'])->name('add-program-manage');
+Route::get('/add-batch-creation',[BatchCreationController::class,'add_batch_creation'])->name('add-batch-creation');
+Route::get('/add-sem-config',[SemesterConfigController::class,'add_sem_config'])->name('add-sem-config');
+Route::get('/add-sub-manage',[SubjectManagementController::class,'add_sub_manage'])->name('add-sub-manage');
+
 
 

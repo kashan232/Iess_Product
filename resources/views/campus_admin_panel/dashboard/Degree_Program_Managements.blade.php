@@ -11,7 +11,7 @@
                     <h3 class="text-center">Degree & Program Managements</h3>
                     <div class="row d-flex justify-content-center">
                         <div class="col-lg-4 col-md-12 col-sm-12 text-center">
-                            <a href="#">
+                            <a href="{{ route('add-degree-creation') }}">
                                 <div class="box-main-card">
                                     <div class="card-content">
                                         <img src="/assets/degree.png" alt="">
@@ -21,7 +21,7 @@
                             </a>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12 text-center">
-                            <a href="#">
+                            <a href="{{ route('add-program-manage') }}">
                                 <div class="box-main-card">
                                     <div class="card-content">
                                         <img src="/assets/syllabus-01.png" alt="">
@@ -31,7 +31,7 @@
                             </a>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12 text-center">
-                            <a href="#">
+                            <a href="{{ route('add-batch-creation') }}">
                                 <div class="box-main-card">
                                     <div class="card-content">
                                         <img src="/assets/syllabus-01.png" alt="">
@@ -41,7 +41,7 @@
                             </a>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12 text-center">
-                            <a href="#">
+                            <a href="{{ route('add-sem-config') }}">
                                 <div class="box-main-card">
                                     <div class="card-content">
                                         <img src="/assets/syllabus-01.png" alt="">
@@ -51,7 +51,7 @@
                             </a>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12 text-center">
-                            <a href="#">
+                            <a href="{{ route('add-sub-manage') }}">
                                 <div class="box-main-card">
                                     <div class="card-content">
                                         <img src="/assets/syllabus-01.png" alt="">
