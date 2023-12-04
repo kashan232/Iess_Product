@@ -9,6 +9,7 @@ use App\Models\CampusClass;
 use App\Models\CampusSubject;
 use App\Models\Class_Section;
 use App\Models\CurrentSession;
+use App\Models\OnlineRegistration;
 use App\Models\StudentAddmission;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -385,5 +386,46 @@ class AdmissionController extends Controller
         $view_student = StudentAddmission::Find($id);
         $view_student->delete();
         return redirect()->back()->with('success', 'Student deleted successfully');
+    }
+    public function online_addmission_form(Request $request)
+    {
+        $pagename = "Online Addmissions";
+        $Institute_admin_id = $request->session()->get('Institute_admin_id');
+        $campus_id = $request->session()->get('campus_id');
+        $campus_name = $request->session()->get('campus_name');
+        // $campuses = campus::where('institute_id', '=', $Institute_admin_id)->where('id', '=', $campus_id)->first();
+
+        return view(
+            'campus_admin_panel.dashboard.Campus_General_Operations.generation_operation.addmission.online_addmission_form',
+            [
+                'pagename' => $pagename, 
+            ]
+        );
+    }
+    public function store_online_addmission_form(Request $request)
+    {
+        $Institute_admin_id = $request->session()->get('Institute_admin_id');
+        $campus_id = $request->session()->get('campus_id');
+        $student = OnlineRegistration::create([
+            'institute_id'           => $Institute_admin_id,
+            'campus_id'              => $campus_id,
+            'cnic'                   => $request->cnic,
+            'retype_cnic'            => $request->retype_cnic,
+            'email'                  => $request->email,
+            'email_verification_code'=> $request->email_verification_code,
+            'mobile_number'          => $request->mobile_number,
+            'father_name'            => $request->birth_date,
+            'father_name'            => $request->father_name,
+            'surname'                => $request->surname,
+            'gender'                 => $request->gender,
+            'country'                => $request->country,
+            'domicile_province'      => $request->domicile_province,
+            'domicile_district'      => $request->domicile_district,
+            'password'               => $request->password,
+            'retype_password'        => $request->retype_password,
+            'created_at'             => Carbon::now(),
+            'updated_at'             => Carbon::now(),
+        ]);
+        return redirect()->back()->with('student-added', 'Student Added Successfully');
     }
 }

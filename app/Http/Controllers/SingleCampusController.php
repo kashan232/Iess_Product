@@ -129,4 +129,25 @@ class SingleCampusController extends Controller
       </script>';
         return Redirect()->route('campus-login');
     }
+
+    public function Degree_Program_Managements(Request $request)
+    {
+        $Institute_admin_id = $request->session()->get('Institute_admin_id');
+        $Institute_admin_email = $request->session()->get('Institute_email');
+        $campus_id = $request->session()->get('campus_id');
+        $campus_username = $request->session()->get('campus_username');
+        $campus_email = $request->session()->get('campus_email');
+        $campus_password = $request->session()->get('campus_password');
+        $campusName = $request->session()->get('campus_name');
+
+        return view('campus_admin_panel.dashboard.Degree_Program_Managements', [
+            'Institute_admin_id' => $Institute_admin_id,
+            'Institute_admin_email' => $Institute_admin_email,
+            'campus_id' => $campus_id,
+            'campus_username' => $campus_username,
+            'campus_email' => $campus_email,
+            'campus_password' => $campus_password,
+            'campusName' => $campusName,
+        ]);
+    }
 }

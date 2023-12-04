@@ -70,12 +70,6 @@ use Illuminate\Support\Facades\Route;
 //     return view('institute_admin_panel.dashboard.index'); 
 // });
   
-// some changes from us
-// Check by kashan 
-// Aiman Work
-// Kashan TEsting
-
-// hello hello hellocomposer 
 Route::get('/Super-admin-login', [MainSuperAdminController::class, 'Super_admin_login'])->name('Super-admin-login');
 Route::post('/super-admin-logged', [MainSuperAdminController::class, 'super_admin_logged'])->name('super-admin-logged');
 Route::get('/logout', [MainSuperAdminController::class, 'logout'])->name('logout');
@@ -99,7 +93,6 @@ Route::get('/all-cities', [CityController::class, 'all_cities'])->name('all-citi
 Route::get('/edit-cities/{id}', [CityController::class, 'edit_cities'])->name('edit-cities');
 Route::post('/update-city/{id}', [CityController::class, 'update_city'])->name('update-city');
 // Route For Super Admin Start-End  
-
 // Route For Insitute Start 
 Route::get('/Insitute-login', [InstitutesController::class, 'Insitute_login'])->name('Insitute-login');
 Route::post('/institute-logged', [InstitutesController::class, 'institute_logged'])->name('institute-logged');
@@ -159,6 +152,9 @@ Route::post('/update-class/{id}', [AdmissionController::class, 'update_class'])-
 Route::get('/class-wise-section', [AdmissionController::class, 'class_wise_section'])->name('class-wise-section');
 Route::post('/save-student', [AdmissionController::class, 'save_student'])->name('save-student');
 Route::get('/admission-slip/{id}', [AdmissionController::class, 'admission_slip',])->name('admission-slip');
+Route::get('/online-addmission-form', [AdmissionController::class, 'online_addmission_form'])->name('online-addmission-form');
+Route::post('/store-online-addmission-form', [AdmissionController::class, 'store_online_addmission_form'])->name('store-online-addmission-form');
+
 
 // General Operation Student Admmision Routes-End
 // General Operation View Attendance Routes
@@ -433,6 +429,7 @@ Route::get('/CampusGeneral-Operations',[SingleCampusController::class,'CampusGen
 Route::get('/CampusAccountsOperations',[SingleCampusController::class,'CampusAccountsOperations'])->name('CampusAccountsOperations');
 Route::get('/CampusHrOperations',[SingleCampusController::class,'CampusHrOperations'])->name('CampusHrOperations');
 Route::get('/dummay-exam-model', [SingleCampusController::class, 'dummay_exam_model'])->name('dummay-exam-model');
+Route::get('/Degree-Program-Managements',[SingleCampusController::class,'Degree_Program_Managements'])->name('Degree-Program-Managements');
 
 Route::get('/campus-batches',[CampusBatchController::class,'campus_batches'])->name('campus-batches');  
 Route::get('/add-batch',[CampusBatchController::class,'add_batch'])->name('add-batch');  
