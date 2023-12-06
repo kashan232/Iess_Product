@@ -15,4 +15,13 @@ class BatchCreationController extends Controller
             ]
         );
     }
+    public function list_batch_creation(Request $request)
+    {
+        $pagename = 'List Degree Creation';
+        return view('campus_admin_panel.dashboard.Campus_General_Operations.degree_progrm_manage.batch_creation.list_batch_creation',
+            [
+                'pagename' => $pagename,
+            ]
+        );
+    }
 }

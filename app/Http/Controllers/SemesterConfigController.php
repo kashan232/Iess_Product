@@ -15,4 +15,13 @@ class SemesterConfigController extends Controller
             ]
         );
     }
+    public function list_sem_config(Request $request)
+    {
+        $pagename = 'List Degree Creation';
+        return view('campus_admin_panel.dashboard.Campus_General_Operations.degree_progrm_manage.semester_config.list_sem_config',
+            [
+                'pagename' => $pagename,
+            ]
+        );
+    }
 }

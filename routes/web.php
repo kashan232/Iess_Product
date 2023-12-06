@@ -575,10 +575,21 @@ Route::get('/uni-block-salary',[ScreenReadyController::class,'uni_block_salary']
 
 // route for the degree and program management
 Route::get('/add-degree-creation',[DegreeCreationController::class,'add_degree_creation'])->name('add-degree-creation');
+Route::get('/list-degree-creation',[DegreeCreationController::class,'list_degree_creation'])->name('list-degree-creation');
+
+
 Route::get('/add-program-manage',[ProgramManagementController::class,'add_program_manage'])->name('add-program-manage');
+Route::get('/list-program-manage',[ProgramManagementController::class,'list_program_manage'])->name('list-program-manage');
+
+
 Route::get('/add-batch-creation',[BatchCreationController::class,'add_batch_creation'])->name('add-batch-creation');
+Route::get('/list-batch-creation',[BatchCreationController::class,'list_batch_creation'])->name('list-batch-creation');
+
 Route::get('/add-sem-config',[SemesterConfigController::class,'add_sem_config'])->name('add-sem-config');
+Route::get('/list-sem-config',[SemesterConfigController::class,'list_sem_config'])->name('list-sem-config');
+
 Route::get('/add-sub-manage',[SubjectManagementController::class,'add_sub_manage'])->name('add-sub-manage');
+Route::get('/list-sub-manage',[SubjectManagementController::class,'list_sub_manage'])->name('list-sub-manage');
 
 
 

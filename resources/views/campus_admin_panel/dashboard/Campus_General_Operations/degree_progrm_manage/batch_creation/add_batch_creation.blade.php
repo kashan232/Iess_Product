@@ -1,68 +1,126 @@
-<style>
-  /* Basic CSS for layout */
-  body{
-    font-family: Arial, sans-serif;
-    margin: 20px;
-  }
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  input[type="text"],
-  input[type="number"],
-  input[type="date"] {
-    width: 300px;
-    padding: 5px;
-    margin-bottom: 10px;
-  }
-  input[type="submit"] {
-    padding: 8px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  input[type="submit"]:hover {
-    background-color: #0056b3;
-  }
-</style>
 @include('campus_admin_panel.dashboard.include.header')
-<!-- Preloader Start Here -->
-<div id="preloader"></div>
-<!-- Preloader End Here -->
-<div id="wrapper" class="wrapper bg-ash">
+<!--**********************************
+        Main wrapper start
+    ***********************************-->
+<div id="main-wrapper">
+    <!--**********************************
+            Nav header start
+        ***********************************-->
     @include('campus_admin_panel.dashboard.include.navbar')
-    <div class="dashboard-page-one">
-        <div class="dashboard-content-one">
-            <div class="container-fluid">
-                <div class="container payroll-heading mt-5">
-                    <h3 class="text-center">Batch Creation Form</h3>
-                    <form action="batch_creation.php" method="POST">
-                      <label for="batchName">Batch Name:</label>
-                      <input type="text" id="batchName" name="batchName" required><br>
-                  
-                      <label for="startDate">Start Date:</label>
-                      <input type="date" id="startDate" name="startDate" required><br>
-                  
-                      <label for="endDate">End Date:</label>
-                      <input type="date" id="endDate" name="endDate" required><br>
-                  
-                      <label for="enrolledStudents">Enrolled Students:</label><br>
-                      <!-- Dropdown for selecting enrolled students -->
-                      <select id="enrolledStudents" name="enrolledStudents[]" multiple required>
-                        <option value="student1">Student 1</option>
-                        <option value="student2">Student 2</option>
-                        <!-- Add more options as needed -->
-                      </select><br>
-                  
-                      <input type="submit" value="Submit">
-                    </form>
+    <!--**********************************
+            Nav header end
+        ***********************************-->
+    <!--**********************************
+            Header start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.topbar')
+    <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+    <!--**********************************
+            Sidebar start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.sidebar')
+    <!--**********************************
+            Sidebar end
+        ***********************************-->
+    <!--**********************************
+            Content body start
+        ***********************************-->
+    <div class="content-body">
+        <!-- row -->
+        <div class="container-fluid">
+            <div class="row page-titles mx-0">
+                <div class="col-sm-6 p-md-0">
+                    <div class="welcome-text">
+                        <h4>Add Batch Creation</h4>
+                    </div>
+                </div>
+                <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="#">All Batch</a></li>
+                        <li class="breadcrumb-item active"><a href="#">Add Batch</a></li>
+                    </ol>
                 </div>
             </div>
-            <br>
+
+            <div class="row">
+                <div class="col-xl-12 col-xxl-12 col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="#" method="post">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Batch Name</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Start Date:</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">End Date:</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Enrolled Students:</label>
+                                            <select id="enrolledStudents" class="form-control" name="enrolledStudents[]" multiple required>
+                                                <option value="student1">Student 1</option>
+                                                <option value="student1">Student 1</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-dark">Cencel</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- Page Area End Here -->
-</div>
+    <!--**********************************
+            Content body end
+        ***********************************-->
+    <!--**********************************
+            Footer start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.poweredby')
+    <!--**********************************
+            Footer end
+        ***********************************-->
 
+    <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+    <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+</div>
+<!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+<!--**********************************
+        Scripts
+    ***********************************-->
 @include('campus_admin_panel.dashboard.include.footer')
+
+
+</body>
+
+</html>

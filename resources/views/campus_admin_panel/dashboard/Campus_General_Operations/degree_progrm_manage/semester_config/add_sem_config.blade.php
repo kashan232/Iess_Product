@@ -1,72 +1,127 @@
-<style>
-  /* Basic CSS for layout */
-  body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-  }
-  label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-  }
-  input[type="text"],
-  input[type="date"],
-  select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-  }
-  input[type="submit"] {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  input[type="submit"]:hover {
-    background-color: #0056b3;
-  }
-</style>
 @include('campus_admin_panel.dashboard.include.header')
-<!-- Preloader Start Here -->
-<div id="preloader"></div>
-<!-- Preloader End Here -->
-<div id="wrapper" class="wrapper bg-ash">
+<!--**********************************
+        Main wrapper start
+    ***********************************-->
+<div id="main-wrapper">
+    <!--**********************************
+            Nav header start
+        ***********************************-->
     @include('campus_admin_panel.dashboard.include.navbar')
-    <div class="dashboard-page-one">
-        <div class="dashboard-content-one">
-            <div class="container-fluid">
-                <div class="container payroll-heading mt-5">
-                    <h3 class="text-center">Semester Configuration Form</h3>
-                    <form action="semester_configuration.php" method="POST">
-                      <label for="semesterName">Semester Name:</label>
-                      <input type="text" id="semesterName" name="semesterName" required>
-                  
-                      <label for="startDate">Start Date:</label>
-                      <input type="date" id="startDate" name="startDate" required>
-                  
-                      <label for="endDate">End Date:</label>
-                      <input type="date" id="endDate" name="endDate" required>
-                  
-                      <label for="subjects">Subjects:</label>
-                      <select id="subjects" name="subjects[]" multiple required>
-                        <option value="subject1">Subject 1</option>
-                        <option value="subject2">Subject 2</option>
-                        <!-- Add more options as needed -->
-                      </select>
-                  
-                      <input type="submit" value="Submit">
-                    </form>
+    <!--**********************************
+            Nav header end
+        ***********************************-->
+    <!--**********************************
+            Header start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.topbar')
+    <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+    <!--**********************************
+            Sidebar start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.sidebar')
+    <!--**********************************
+            Sidebar end
+        ***********************************-->
+    <!--**********************************
+            Content body start
+        ***********************************-->
+    <div class="content-body">
+        <!-- row -->
+        <div class="container-fluid">
+            <div class="row page-titles mx-0">
+                <div class="col-sm-6 p-md-0">
+                    <div class="welcome-text">
+                        <h4>Add Semester Configuration</h4>
+                    </div>
+                </div>
+                <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="#">All Semester</a></li>
+                        <li class="breadcrumb-item active"><a href="#">Add Semester</a></li>
+                    </ol>
                 </div>
             </div>
-            <br>
+
+            <div class="row">
+                <div class="col-xl-12 col-xxl-12 col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="#" method="post">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Semester Name</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Start Date:</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">End Date:</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Subjects:</label>
+                                            <select class="form-control" name="subjects[]" multiple required>
+                                              <option value="subject1">Subject 1</option>
+                                              <option value="subject2">Subject 2</option>
+                                              <!-- Add more options as needed -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-dark">Cencel</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- Page Area End Here -->
-</div>
+    <!--**********************************
+            Content body end
+        ***********************************-->
+    <!--**********************************
+            Footer start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.poweredby')
+    <!--**********************************
+            Footer end
+        ***********************************-->
 
+    <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+    <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+</div>
+<!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+<!--**********************************
+        Scripts
+    ***********************************-->
 @include('campus_admin_panel.dashboard.include.footer')
+
+
+</body>
+
+</html>
