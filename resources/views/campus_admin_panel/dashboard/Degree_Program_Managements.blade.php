@@ -24,7 +24,7 @@
                             <a href="{{ route('add-program-manage') }}">
                                 <div class="box-main-card">
                                     <div class="card-content">
-                                        <img src="/assets/syllabus-01.png" alt="">
+                                        <img src="/assets/program_m.png" alt="">
                                     </div>
                                     <h5>Program Management</h5>
                                 </div>
@@ -34,7 +34,7 @@
                             <a href="{{ route('add-batch-creation') }}">
                                 <div class="box-main-card">
                                     <div class="card-content">
-                                        <img src="/assets/syllabus-01.png" alt="">
+                                        <img src="/assets/batch-p.png" alt="">
                                     </div>
                                     <h5>Batch Creation</h5>
                                 </div>
@@ -44,7 +44,7 @@
                             <a href="{{ route('add-sem-config') }}">
                                 <div class="box-main-card">
                                     <div class="card-content">
-                                        <img src="/assets/syllabus-01.png" alt="">
+                                        <img src="/assets/calendar.png" alt="">
                                     </div>
                                     <h5>Semester Configuration</h5>
                                 </div>
@@ -54,7 +54,7 @@
                             <a href="{{ route('add-sub-manage') }}">
                                 <div class="box-main-card">
                                     <div class="card-content">
-                                        <img src="/assets/syllabus-01.png" alt="">
+                                        <img src="/assets/books.png" alt="">
                                     </div>
                                     <h5>Subject Management</h5>
                                 </div>

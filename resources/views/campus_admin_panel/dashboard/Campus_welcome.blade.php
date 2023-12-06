@@ -13,6 +13,16 @@
                     <!-- <h3 class="text-center">General Operations</h3> -->
                     <div class="row d-flex justify-content-center">
                         <div class="col-lg-4 col-md-12 col-sm-12 text-center">
+                            <a href="{{ route('Degree-Program-Managements') }}">
+                                <div class="box-main-card">
+                                    <div class="card-content">
+                                        <img src="/assets/new addmission-01.png" alt="">
+                                    </div>
+                                    <h5>Degree & Program Managements</h5>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12 text-center">
                             <a href="{{ route('CampusGeneral-Operations') }}">
                                 <div class="box-main-card">
                                     <div class="card-content">
@@ -75,16 +85,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col-lg-4 col-md-12 col-sm-12 text-center">
-                            <a href="{{ route('Degree-Program-Managements') }}">
-                                <div class="box-main-card">
-                                    <div class="card-content">
-                                        <img src="/assets/new addmission-01.png" alt="">
-                                    </div>
-                                    <h5>Degree & Program Managements</h5>
-                                </div>
-                            </a>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
