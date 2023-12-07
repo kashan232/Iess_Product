@@ -36,8 +36,7 @@ class AdmissionController extends Controller
             ->orderBy('id', 'DESC')
             ->get();
         $campusName = $request->session()->get('campus_name');
-        return view(
-            'campus_admin_panel.dashboard.Campus_General_Operations.generation_operation.addmission.addmissions',
+        return view('campus_admin_panel.dashboard.Campus_General_Operations.generation_operation.addmission.addmissions',
             [
                 'pagename' => $pagename, 'student_lists' => $student_lists,
             ]

@@ -34,145 +34,195 @@
         /* Set font color to white */
     }
 </style>
-<!-- Preloader Start Here -->
-<div id="preloader"></div>
-<!-- Preloader End Here -->
-<div id="wrapper" class="wrapper bg-ash">
+<!--**********************************
+        Main wrapper start
+    ***********************************-->
+<div id="main-wrapper">
+    <!--**********************************
+            Nav header start
+        ***********************************-->
     @include('campus_admin_panel.dashboard.include.navbar')
-    <div class="dashboard-page-one">
-        <div class="dashboard-content-one">
-            <div class="breadcrumbs-area">
+    <!--**********************************
+            Nav header end
+        ***********************************-->
+    <!--**********************************
+            Header start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.topbar')
+    <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+    <!--**********************************
+            Sidebar start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.sidebar')
+    <!--**********************************
+            Sidebar end
+        ***********************************-->
+    <!--**********************************
+            Content body start
+        ***********************************-->
+    <div class="content-body">
+        <!-- row -->
+        <div class="container-fluid">
+				    
+            <div class="row page-titles mx-0">
+                <div class="col-sm-6 p-md-0">
+                    <div class="welcome-text">
+                        <h4> Attendance Of Per Class</h4>
+                    </div>
+                </div>
+                <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0);">All Attendance</a></li>
+                    </ol>
+                </div>
             </div>
-            <div class="container-fluid">
-                <div class="dashboard-content-one">
-                    <!-- Breadcubs Area Start Here -->
-
-                    <!-- Breadcubs Area End Here -->
-                    <!-- Student Table Area Start Here -->
-                    <div class="card height-auto">
-                        <div class="card-body">
-                            <div class="heading-layout1">
-                                <div class="item-title text-center w-100 mt-5 mb-5">
-                                    <h2>All Record Attendance</h2>
+            
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row tab-content">
+                        <div id="list-view" class="tab-pane fade active show col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="example3" class="display" style="min-width: 845px">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Admission No</th>
+                                                    <th>Roll Number</th>
+                                                    <th>Name</th>
+                                                    <th>Percentage</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($fetch_students_by_class as $fetch_students_by_class)
+                                                    <tr>
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ $fetch_students_by_class->id }}</td>
+                                                        <td>
+                                                            <a href="{{ route('studentattendanceview', ['id' => $fetch_students_by_class->gr]) }}" class="text-primary">{{ $fetch_students_by_class->gr }}</a>
+                                                        </td>
+                                                        <td>{{ $fetch_students_by_class->first_name }}</td>
+                                                        <td>
+                                                            <div class="progress" id="deto">
+                                                                <div class="progress-bar"
+                                                                    style="width: {{ $fetch_students_by_class->attendancePercentage }}%;">
+                                                                </div>
+                                                                <span
+                                                                    class="percentage-label">{{ $fetch_students_by_class->attendancePercentage }}%</span>
+        
+                                                                @if ($fetch_students_by_class->attendancePercentage >= 75)
+                                                                    <span
+                                                                        class="attendance-percentage good">{{ $fetch_students_by_class->attendancePercentage }}%</span>
+                                                                @elseif ($fetch_students_by_class->attendancePercentage >= 50)
+                                                                    <span
+                                                                        class="attendance-percentage average">{{ $fetch_students_by_class->attendancePercentage }}%</span>
+                                                                @else
+                                                                    <!-- i comment this line to hide mini value of percentage  -->
+                                                                    <!-- <span class="attendance-percentage poor">{{ $fetch_students_by_class->attendancePercentage }}%</span> -->
+                                                                @endif
+                                                            </div>
+                                                        </td>												
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="table-responsive">
-                                <table class="table display data-table text-nowrap">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Admission No</th>
-                                            <th>Roll Number</th>
-                                            <th>Name</th>
-                                            <th>Percentage</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($fetch_students_by_class as $fetch_students_by_class)
-                                            <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $fetch_students_by_class->id }}</td>
-                                                <!-- <td>{{ $fetch_students_by_class->gr }}</td> -->
-                                                <td><a
-                                                        href="{{ route('studentattendanceview', ['id' => $fetch_students_by_class->gr]) }}">{{ $fetch_students_by_class->gr }}</a>
-                                                </td>
-
-                                                <td>{{ $fetch_students_by_class->first_name }}</td>
-                                                <!-- <td>{{ $fetch_students_by_class->attendancePercentage }}</td>
-                                     -->
-                                                <td>
-                                                    <!-- <div class="progress" id="deto">
-                                                @if ($fetch_students_by_class->attendancePercentage >= 75)
-                                                    <span class="attendance-percentage good">{{ $fetch_students_by_class->attendancePercentage }}%</span>
-                                                    @elseif ($fetch_students_by_class->attendancePercentage >= 50)
-                                                    <span class="attendance-percentage average">{{ $fetch_students_by_class->attendancePercentage }}%</span>
-                                                    @else
-                                                    <span class="attendance-percentage poor">{{ $fetch_students_by_class->attendancePercentage }}%</span>
-                                                @endif
-                                            </div> -->
-
-                                                    <div class="progress" id="deto">
-                                                        <div class="progress-bar"
-                                                            style="width: {{ $fetch_students_by_class->attendancePercentage }}%;">
-                                                        </div>
-                                                        <span
-                                                            class="percentage-label">{{ $fetch_students_by_class->attendancePercentage }}%</span>
-
-                                                        @if ($fetch_students_by_class->attendancePercentage >= 75)
-                                                            <span
-                                                                class="attendance-percentage good">{{ $fetch_students_by_class->attendancePercentage }}%</span>
-                                                        @elseif ($fetch_students_by_class->attendancePercentage >= 50)
-                                                            <span
-                                                                class="attendance-percentage average">{{ $fetch_students_by_class->attendancePercentage }}%</span>
-                                                        @else
-                                                            <!-- i comment this line to hide mini value of percentage  -->
-                                                            <!-- <span class="attendance-percentage poor">{{ $fetch_students_by_class->attendancePercentage }}%</span> -->
-                                                        @endif
-                                                    </div>
-                                                </td>
-
-                                            </tr>
-                                        @endforeach
-
-                                    </tbody>
-                                </table>
-                            </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>
-            <!-- Page Area End Here -->
+            
         </div>
-        @include('campus_admin_panel.dashboard.include.footer')
-        <script>
-            $(document).ready(function() {
-                $('#apply-filters').click(function() {
-                    var startDate = $('#datepicker-start').val();
-                    var endDate = $('#datepicker-end').val();
-                    var attendanceType = $('#attendance-type').val();
+    </div>
+    <!--**********************************
+            Content body end
+        ***********************************-->
+    <!--**********************************
+            Footer start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.poweredby')
+    <!--**********************************
+            Footer end
+        ***********************************-->
 
-                    // Apply the filters to the table rows
-                    $('.data-table tbody tr').each(function() {
-                        var date = $(this).find('td:nth-child(2)').text();
-                        var type = $(this).find('td:nth-child(4) button').text();
+    <!--**********************************
+           Support ticket button start
+        ***********************************-->
 
-                        if ((startDate === '' || date >= startDate) && (endDate === '' || date <=
-                                endDate) &&
-                            (attendanceType === '' || type === attendanceType)) {
-                            $(this).show();
-                        } else {
-                            $(this).hide();
-                        }
-                    });
-                });
+    <!--**********************************
+           Support ticket button end
+        ***********************************-->
 
-                $('#export-pdf').click(function() {
-                    var startDate = $('#datepicker-start').val();
 
-                    var endDate = $('#datepicker-end').val();
-                    var attendanceType = $('#attendance-type').val();
+</div>
+<!--**********************************
+        Main wrapper end
+    ***********************************-->
 
-                    // var pdfUrl = '{{ route('export.pdf') }}?start_date=' + startDate + '&end_date=' + endDate + '&attendance_type=' + attendanceType;
+<!--**********************************
+        Scripts
+    ***********************************-->
+@include('campus_admin_panel.dashboard.include.footer')
 
-                    // Construct the URL with filter parameters
-                    var pdfUrl = $(this).data('route'); // Retrieve the route URL from the data attribute
+<script>
+    $(document).ready(function() {
+        $('#apply-filters').click(function() {
+            var startDate = $('#datepicker-start').val();
+            var endDate = $('#datepicker-end').val();
+            var attendanceType = $('#attendance-type').val();
 
-                    // Construct the URL with filter parameters
-                    if (attendanceType === 'All' && startDate === '' && endDate === '') {
-                        // Export all records without date range or attendance type filter
-                        pdfUrl += '';
-                    } else if (attendanceType === 'All') {
-                        // Export all records with date range
-                        pdfUrl += '?start_date=' + startDate + '&end_date=' + endDate;
-                    } else {
-                        // Export filtered records
-                        pdfUrl += '?start_date=' + startDate + '&end_date=' + endDate + '&attendance_type=' +
-                            attendanceType;
-                    }
+            // Apply the filters to the table rows
+            $('.data-table tbody tr').each(function() {
+                var date = $(this).find('td:nth-child(2)').text();
+                var type = $(this).find('td:nth-child(4) button').text();
 
-                    // Open the URL in a new window or tab
-                    window.open(pdfUrl, '_blank');
-                });
-
+                if ((startDate === '' || date >= startDate) && (endDate === '' || date <=
+                        endDate) &&
+                    (attendanceType === '' || type === attendanceType)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
             });
-        </script>
+        });
+
+        $('#export-pdf').click(function() {
+            var startDate = $('#datepicker-start').val();
+
+            var endDate = $('#datepicker-end').val();
+            var attendanceType = $('#attendance-type').val();
+
+            // var pdfUrl = '{{ route('export.pdf') }}?start_date=' + startDate + '&end_date=' + endDate + '&attendance_type=' + attendanceType;
+
+            // Construct the URL with filter parameters
+            var pdfUrl = $(this).data('route'); // Retrieve the route URL from the data attribute
+
+            // Construct the URL with filter parameters
+            if (attendanceType === 'All' && startDate === '' && endDate === '') {
+                // Export all records without date range or attendance type filter
+                pdfUrl += '';
+            } else if (attendanceType === 'All') {
+                // Export all records with date range
+                pdfUrl += '?start_date=' + startDate + '&end_date=' + endDate;
+            } else {
+                // Export filtered records
+                pdfUrl += '?start_date=' + startDate + '&end_date=' + endDate + '&attendance_type=' +
+                    attendanceType;
+            }
+
+            // Open the URL in a new window or tab
+            window.open(pdfUrl, '_blank');
+        });
+
+    });
+</script>
+</body>
+
+</html>

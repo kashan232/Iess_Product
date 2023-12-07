@@ -1,130 +1,219 @@
 @include('campus_admin_panel.dashboard.include.header')
-<!-- Preloader Start Here -->
-<div id="preloader"></div>
-<!-- Preloader End Here -->
-<div id="wrapper" class="wrapper bg-ash">
+<!--**********************************
+        Main wrapper start
+    ***********************************-->
+<div id="main-wrapper">
+    <!--**********************************
+            Nav header start
+        ***********************************-->
     @include('campus_admin_panel.dashboard.include.navbar')
-    <div class="dashboard-page-one">
-        <div class="dashboard-content-one">
-            <div class="container-fluid">
-                <div class="dashboard-content-one">
-                    <!-- Breadcubs Area Start Here -->
-                    <div class="row">
-                        <div class="col-12-xxxl col-xl-12 col-lg-12 col-12 form-group mt-5 text-right">
-                            <a href="{{ route('add-Student') }}">
-                                <button type="button" class="btn btn-warning text-white mb-3" style="font-size: 16px">
-                                    Add Student
-                                </button>
-                            </a>
-                        </div>
+    <!--**********************************
+            Nav header end
+        ***********************************-->
+    <!--**********************************
+            Header start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.topbar')
+    <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+    <!--**********************************
+            Sidebar start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.sidebar')
+    <!--**********************************
+            Sidebar end
+        ***********************************-->
+    <!--**********************************
+            Content body start
+        ***********************************-->
+    <div class="content-body">
+        <!-- row -->
+        <div class="container-fluid">
+
+            <div class="row page-titles mx-0">
+                <div class="col-sm-6 p-md-0">
+                    <div class="welcome-text">
+                        <h4>All  Students</h4>
                     </div>
-                    <!-- Breadcubs Area End Here -->
-                    <!-- Student Table Area Start Here -->
-                    <div class="card height-auto">
-                        <div class="card-body">
-                            @if (session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
+                </div>
+                <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0);">All Students</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0);">Add Students</a></li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="nav nav-pills mb-3">
+                        <li class="nav-item"><a href="#list-view" data-toggle="tab"
+                                class="nav-link btn-primary mr-1 show active">List View</a></li>
+                        <li class="nav-item"><a href="#grid-view" data-toggle="tab" class="nav-link btn-primary">Grid
+                                View</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-12">
+                    <div class="row tab-content">
+                        <div id="list-view" class="tab-pane fade active show col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">All Students </h4>
+                                    <a href="{{ route('add-Student') }}" class="btn btn-primary">+ Add new</a>
                                 </div>
-                            @endif
-                            <div class="heading-layout1">
-                                <div>
-                                    <h3>All Students</h3>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="example3" class="display" style="min-width: 845px">
+                                            <thead>
+                                                <tr>
+                                                    <th>S.No</th>
+                                                    <th>Student Image</th>
+                                                    <th>Student Name</th>
+                                                    <th>GR No:</th>
+                                                    <th>Class</th>
+                                                    <th>Section</th>
+                                                    <th>Batch</th>
+                                                    <th>House</th>
+                                                    <th>Enrollment</th>
+                                                    <th>Addmission Slip</th>
+                                                    <th>More</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($student_lists as $student_list)
+                                                    <tr>
+                                                        <td scope="row">{{ $loop->iteration }}</td>
+                                                        <td>
+                                                            <img class="rounded-circle" width="35"
+                                                                src="/campus/general_operations/student_image/{{ $student_list->student_img }}"
+                                                                alt="student_img">
+                                                        </td>
+                                                        <td>{{ $student_list->first_name }}</td>
+                                                        <td>{{ $student_list->gr }}</td>
+                                                        <td>{{ $student_list->class_name }}</td>
+                                                        <td>{{ $student_list->section_name }}</td>
+                                                        <td>{{ $student_list->batch }}</td>
+                                                        <td>{{ $student_list->Address }}</td>
+                                                        <td>{{ $student_list->enrollment_date }}</td>
+                                                        <td>
+                                                            <a
+                                                                href="{{ route('admission-slip', ['id' => $student_list->id]) }}">
+                                                                <button class="btn btn-success"
+                                                                    style="font-size: 15px">Slip </button>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{ route('change-class', ['id' => $student_list->id]) }}"
+                                                                class="btn btn-sm btn-primary"><i
+                                                                    class="la la-pencil"></i></a>
+                                                            <a href="{{ route('edit-student', ['id' => $student_list->id]) }}"
+                                                                class="btn btn-sm btn-danger"><i
+                                                                    class="la la-trash-o"></i></a>
+                                                            <a href="{{ route('view-student', ['id' => $student_list->id]) }}"
+                                                                class="btn btn-sm btn-danger"><i
+                                                                    class="la la-trash-o"></i></a>
+                                                            <a href="{{ route('delete-student', ['id' => $student_list->id]) }}"
+                                                                class="btn btn-sm btn-danger"><i
+                                                                    class="la la-trash-o"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-                            <form class="mg-b-20">
-                                <div class="row d-flex justify-content-end gutters-8">
-                                    <div class="col-5-xxxl col-xl-3 col-lg-3 col-12 form-group">
-                                        <input type="text" placeholder="Search by..." class="form-control" />
-                                    </div>
-
-                                    <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group">
-                                        <button type="button" class="btn btn-warning text-white mt-2 mb-3"
-                                            style="font-size: 18px">
-                                            Search
-                                        </button>
+                        </div>
+                        <div id="grid-view" class="tab-pane fade col-lg-12">
+                            <div class="row">
+                                @foreach ($student_lists as $student_list)
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                    <div class="card card-profile">
+                                        <div class="card-header justify-content-end pb-0">
+                                            <div class="dropdown">
+                                                <button class="btn btn-link" type="button" data-toggle="dropdown">
+                                                    <span class="dropdown-dots fs--1"></span>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-right border py-0">
+                                                    <div class="py-2">
+                                                        <a class="dropdown-item" href="{{ route('change-class', ['id' => $student_list->id]) }}">Change Class</a>
+                                                        <a class="dropdown-item text-danger" href="{{ route('edit-student', ['id' => $student_list->id]) }}">Edit</a>
+                                                        <a class="dropdown-item text-danger" href="{{ route('delete-student', ['id' => $student_list->id]) }}">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body pt-2">
+                                            <div class="text-center">
+                                                <div class="profile-photo">
+                                                    <img src="new_template/images/profile/small/pic2.jpg" width="100"
+                                                        class="img-fluid rounded-circle" alt="">
+                                                </div>
+                                                <h3 class="mt-4 mb-1">{{ $student_list->first_name }}</h3>
+                                                <p class="text-muted">{{ $student_list->batch }}</p>
+                                                <ul class="list-group mb-3 list-group-flush">
+                                                    <li class="list-group-item px-0 d-flex justify-content-between">
+                                                        <span class="mb-0">Gender :</span><strong>{{ $student_list->first_name }}</strong>
+                                                    </li>
+                                                    <li class="list-group-item px-0 d-flex justify-content-between">
+                                                        <span class="mb-0">Phone No. :</span><strong>{{ $student_list->contact }}</strong>
+                                                    </li>
+                                                    <li class="list-group-item px-0 d-flex justify-content-between">
+                                                        <span
+                                                            class="mb-0">Email:</span><strong>{{ $student_list->student_email }}</strong>
+                                                    </li>
+                                                    <li class="list-group-item px-0 d-flex justify-content-between">
+                                                        <span class="mb-0">Address:</span><strong>{{ $student_list->Address }}</strong>
+                                                    </li>
+                                                </ul>
+                                                <a class="btn btn-outline-primary btn-rounded mt-3 px-4"
+                                                    href="#">Read More</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </form>
-                            <div class="table-responsive">
-                                <table class="table display data-table text-nowrap">
-                                    <thead>
-                                        <tr>
-                                            <th>S.No</th>
-                                            <th>Student Image</th>
-                                            <th>Student Name</th>
-                                            <th>GR No:</th>
-                                            <th>Class</th>
-                                            <th>Section</th>
-                                            <th>Batch</th>
-                                            <th>House</th>
-                                            <th>Enrollment</th>
-                                            <th>Addmission Slip</th>
-                                            <th>More</th>
-                                        </tr>
-                                    </thead>
-                                    @php
-                                        $serialNumber = 1;
-                                    @endphp
-                                    <tbody>
-                                        @foreach ($student_lists as $student_list)
-                                            <tr>
-                                                <td> {{ $serialNumber }} </td>
-
-                                                <td>
-                                                    <img src="/campus/general_operations/student_image/{{ $student_list->student_img }}"
-                                                        alt="student_img" class="rounded-circle" width="80px"
-                                                        height="80px">
-                                                </td>
-                                                <td>{{ $student_list->first_name }}</td>
-                                                <td>{{ $student_list->gr }}</td>
-                                                <td>{{ $student_list->class_name }}</td>
-                                                <td>{{ $student_list->section_name }}</td>
-                                                <td>{{ $student_list->batch }}</td>
-                                                <td>{{ $student_list->Address }}</td>
-                                                <td>{{ $student_list->enrollment_date }}</td>
-                                                <td>
-                                                    <a href="{{ route('admission-slip', ['id' => $student_list->id]) }}">
-                                                        <button class="btn btn-success" style="font-size: 15px">Slip Generate</button>
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                                                            aria-expanded="false">
-                                                            <span class="flaticon-more-button-of-three-dots"></span>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item"
-                                                                href="{{ route('change-class', ['id' => $student_list->id]) }}">
-                                                                <i class="fad fa-class text-danger"></i>Change Class</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="{{ route('edit-student', ['id' => $student_list->id]) }}"><i
-                                                                    class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="{{ route('view-student', ['id' => $student_list->id]) }}"><i
-                                                                    class="fas fa-eye text-orange-peel"></i>View</a>
-                                                            <a class="dropdown-item"
-                                                                href="{{ route('delete-student', ['id' => $student_list->id]) }}"><i
-                                                                    class="fas fa-times text-danger"></i>Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            @php
-                                                $serialNumber++;
-                                            @endphp
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Page Area End Here -->
-        </div>
 
-        @include('campus_admin_panel.dashboard.include.footer')
+        </div>
+    </div>
+    <!--**********************************
+            Content body end
+        ***********************************-->
+    <!--**********************************
+            Footer start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.poweredby')
+    <!--**********************************
+            Footer end
+        ***********************************-->
+
+    <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+    <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+</div>
+<!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+<!--**********************************
+        Scripts
+    ***********************************-->
+@include('campus_admin_panel.dashboard.include.footer')
+
+
+</body>
+
+</html>

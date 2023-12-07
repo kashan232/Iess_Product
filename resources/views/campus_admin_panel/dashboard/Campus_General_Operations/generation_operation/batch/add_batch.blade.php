@@ -1,125 +1,111 @@
-<!DOCTYPE html>
-<html lang="en">
-
 @include('campus_admin_panel.dashboard.include.header')
-
-
-<style>
-    #yellow {
-        height: 300px;
-
-    }
-</style>
-
-<body>
-
-
-    <div id="wrapper" class="wrapper bg-ash">
-        
-@include('campus_admin_panel.dashboard.include.navbar')
-
-
-        <div class="dashboard-page-one">
-       
-
-
-            <div class="dashboard-content-one">
-
-                <div class="breadcrumbs-area">
-                    <!-- <h3>Institute Dashboard </h3>
-                    <ul>
-                        <li>  
-                            <a href="/main_assets/home.html">Home</a>
-                        </li>
-                        <li>Admin</li>
-                    </ul> -->
-                </div>
-
-
-
-
-                @if(session('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Congratulations!</strong> {{ session('success') }}.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>  
-                @endif
-
-                <div class="card height-auto">
-                    <div class="card-body" id="yellow">
-
-
-                        <div class="heading-layout1">
-                            <div class="item-title">
-                                <h3>pagename</h3>
-                            </div>
-
-                        </div>    
-
-                        <form class="new-added-form" action="{{route('save-batch')}}" method="POST">
-                            @csrf
-
-
-                            <div class="row">
-                                <div class="col-xl-6 col-lg-6 col-12 form-group">
-
-                                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-                                    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-
-                                    <p>Start Date: <input type="text" id="datepicker" class="form-control" name="start_date" required readonly/></p>
-                                </div>
-
-
-                                <div class="col-xl-6 col-lg-6 col-12 form-group">
-                                    <p>End Date: <input type="text" class="form-control" id="endDatePicker" name="end_date" readonly /></p>
-                                </div>
-
-                                <div class="col-12 form-group mg-t-8">
-                                    <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">
-                                        Save
-                                    </button>
-                                </div>  
-
-                            </div>
-                        </form> 
-
-                        <script>
-                            $(function() {
-                                var currentYear = new Date().getFullYear();
-                                var startYear = currentYear - 100; // Pichle 100 saal se
-                                var endYear = currentYear + 500; // Agley 100 saal tak
-
-                                $('#datepicker').datepicker({
-                                    changeYear: true,
-                                    showButtonPanel: true,
-                                    dateFormat: 'yy',
-                                    yearRange: startYear + ':' + endYear, // Set minimum and maximum year range
-                                    onClose: function(dateText, inst) {
-                                        var selectedYear = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-                                        $('#endDatePicker').val(parseInt(selectedYear) + 1); // Set year in the second input
-                                        $(this).datepicker('setDate', new Date(selectedYear, 1));
-                                    }
-                                });
-
-                                $("#datepicker").focus(function() {
-                                    $(".ui-datepicker-month").hide();
-                                    $(".ui-datepicker-calendar").hide();
-                                });
-                            });
-                        </script>
-
-
-
-
-
+<!--**********************************
+        Main wrapper start
+    ***********************************-->
+<div id="main-wrapper">
+    <!--**********************************
+            Nav header start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.navbar')
+    <!--**********************************
+            Nav header end
+        ***********************************-->
+    <!--**********************************
+            Header start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.topbar')
+    <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+    <!--**********************************
+            Sidebar start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.sidebar')
+    <!--**********************************
+            Sidebar end
+        ***********************************-->
+    <!--**********************************
+            Content body start
+        ***********************************-->
+    <div class="content-body">
+        <!-- row -->
+        <div class="container-fluid">
+            <div class="row page-titles mx-0">
+                <div class="col-sm-6 p-md-0">
+                    <div class="welcome-text">
+                        <h4>Batch</h4>
                     </div>
                 </div>
+                <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="#">All Batches</a></li>
+                        <li class="breadcrumb-item active"><a href="#">Add Batch</a></li>
+                    </ol>
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col-xl-12 col-xxl-12 col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form class="new-added-form" action="{{route('save-batch')}}" method="POST">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Start Date</label>
+                                            <input type="text"  class="form-control" name="start_date" required/>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">End Date</label>
+                                            <input type="text" class="form-control" id="endDatePicker" name="end_date" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="submit" class="btn btn-dark">Cencel</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <!--**********************************
+            Content body end
+        ***********************************-->
+    <!--**********************************
+            Footer start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.poweredby')
+    <!--**********************************
+            Footer end
+        ***********************************-->
+
+    <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+    <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+</div>
+<!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+<!--**********************************
+        Scripts
+    ***********************************-->
+@include('campus_admin_panel.dashboard.include.footer')
+
 
 </body>
 

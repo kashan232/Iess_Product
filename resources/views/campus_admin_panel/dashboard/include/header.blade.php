@@ -7,10 +7,10 @@
     <title>IESS </title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-	<link rel="stylesheet" href="new_template/vendor/bootstrap-select/dist/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="new_template/css/style.css">
-	<link rel="stylesheet" href="new_template/css/skin.css">
-    <link href="new_template/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="/new_template/vendor/bootstrap-select/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="/new_template/css/style.css">
+	<link rel="stylesheet" href="/new_template/css/skin.css">
+    <link href="/new_template/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
 </head>
 <body>
 

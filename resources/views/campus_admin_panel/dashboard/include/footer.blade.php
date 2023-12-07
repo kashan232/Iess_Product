@@ -1,27 +1,27 @@
     
      <!-- Required vendors -->
-     <script src="new_template/vendor/global/global.min.js"></script>
-     <script src="new_template/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-     <script src="new_template/js/custom.min.js"></script>
+     <script src="/new_template/vendor/global/global.min.js"></script>
+     <script src="/new_template/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+     <script src="/new_template/js/custom.min.js"></script>
         
      <!-- Datatable -->
-    <script src="new_template/vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="new_template/js/plugins-init/datatables.init.js"></script>
+    <script src="/new_template/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/new_template/js/plugins-init/datatables.init.js"></script>
      <!-- Chart Morris plugin files -->
-     <script src="new_template/vendor/raphael/raphael.min.js"></script>
-     <script src="new_template/vendor/morris/morris.min.js"></script>
+     <script src="/new_template/vendor/raphael/raphael.min.js"></script>
+     <script src="/new_template/vendor/morris/morris.min.js"></script>
          
      
      <!-- Chart piety plugin files -->
-     <script src="new_template/vendor/peity/jquery.peity.min.js"></script>
+     <script src="/new_template/vendor/peity/jquery.peity.min.js"></script>
      
          <!-- Demo scripts -->
-     <script src="new_template/js/dashboard/dashboard-2.js"></script>
+     <script src="/new_template/js/dashboard/dashboard-2.js"></script>
      
      <!-- Svganimation scripts -->
-     <script src="new_template/vendor/svganimation/vivus.min.js"></script>
-     <script src="new_template/vendor/svganimation/svg.animation.js"></script>
-     <script src="new_template/js/styleSwitcher.js"></script>
+     <script src="/new_template/vendor/svganimation/vivus.min.js"></script>
+     <script src="/new_template/vendor/svganimation/svg.animation.js"></script>
+     <script src="/new_template/js/styleSwitcher.js"></script>
  
          
     <script>

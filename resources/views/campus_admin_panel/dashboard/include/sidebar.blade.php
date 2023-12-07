@@ -72,8 +72,8 @@
                     <span class="nav-text">Batch</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="all-professors.html">All Batches</a></li>
-                    <li><a href="add-professor.html">Add Batch</a></li>
+                    <li><a href="{{ route('campus-batches') }}">All Batches</a></li>
+                    <li><a href="{{ route('add-batch') }}">Add Batch</a></li>
                 </ul>
             </li>
 
@@ -83,13 +83,13 @@
                     <span class="nav-text">Admissions</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="all-professors.html">All Admissions</a></li>
-                    <li><a href="add-professor.html">Add Admission</a></li>
+                    <li><a href="{{ route('admissions') }}">All Admissions</a></li>
+                    <li><a href="{{ route('add-Student') }}">Add Admission</a></li>
                 </ul>
             </li>
             
             <li>
-                <a href="javascript:void()" aria-expanded="false">
+                <a href="{{ route('view-attendance-institute') }}" aria-expanded="false">
                     <i class="la la-users"></i>
                     <span class="nav-text">Attendance</span>
                 </a>
