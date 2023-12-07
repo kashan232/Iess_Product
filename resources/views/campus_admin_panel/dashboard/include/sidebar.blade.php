@@ -165,21 +165,21 @@
 
             <li class="nav-label">Accounts</li>
             <li>
-                <a href="javascript:void()" aria-expanded="false">
+                <a href="{{ route('list-salary') }}" aria-expanded="false">
                     <i class="la la-users"></i>
                     <span class="nav-text">Salary</span>
                 </a>
             </li>
 
             <li>
-                <a href="javascript:void()" aria-expanded="false">
+                <a href="{{ route('all-deduction') }}" aria-expanded="false">
                     <i class="la la-users"></i>
                     <span class="nav-text">Deduction</span>
                 </a>
             </li>
             
             <li>
-                <a href="javascript:void()" aria-expanded="false">
+                <a href="{{ route('all-bonus') }}" aria-expanded="false">
                     <i class="la la-users"></i>
                     <span class="nav-text">Bonus</span>
                 </a>
