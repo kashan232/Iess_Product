@@ -1,138 +1,146 @@
-@include('institute_admin_panel.dashboard.include.header')
-<style>
-    #stock_message {
-        display: none;
-    }
-</style>
-<!-- Preloader Start Here -->
-<div id="preloader"></div>
-<!-- Preloader End Here -->
-<div id="wrapper" class="wrapper bg-ash">
+@include('campus_admin_panel.dashboard.include.header')
+<!--**********************************
+        Main wrapper start
+    ***********************************-->
+<div id="main-wrapper">
+    <!--**********************************
+            Nav header start
+        ***********************************-->
     @include('campus_admin_panel.dashboard.include.navbar')
-    <!-- Header Menu Area Start Here -->
-    <div class="dashboard-page-one">
-        <!-- Sidebar Area End Here -->
-        <div class="dashboard-content-one">
-            <!-- Breadcubs Area Start Here -->
-            <!-- Breadcubs Area End Here -->
-            <!-- Student Table Area Start Here -->
-            <div class="card height-auto mt-4">
-                <div class="card-body">
-                    @if (session('delete-message-inventory'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>Congratulations!</strong> {{ session('delete-message-inventory') }}.
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    @endif
-                    <div class="heading-layout1">
-                        <div class="item-title">
-                            <h3>List Of salaries</h3>
-                        </div>
+    <!--**********************************
+            Nav header end
+        ***********************************-->
+    <!--**********************************
+            Header start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.topbar')
+    <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+    <!--**********************************
+            Sidebar start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.sidebar')
+    <!--**********************************
+            Sidebar end
+        ***********************************-->
+    <!--**********************************
+            Content body start
+        ***********************************-->
+    <div class="content-body">
+        <!-- row -->
+        <div class="container-fluid">
+
+            <div class="row page-titles mx-0">
+                <div class="col-sm-6 p-md-0">
+                    <div class="welcome-text">
+                        <h4>Salaries</h4>
                     </div>
-                    <div class="table-responsive">
-                        <table class="table display data-table text-nowrap">
-                            <thead class="">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Title</th>
-                                    <th>Name</th>
-                                    <th>Department</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tr>
-                                <td>1</td>
-                                <td>SR.Teacher</td>
-                                <td>KAshan Shaikh</td>
-                                <td>Teacher</td>
-                                <td>
-                                    <a class="" href="#">
-                                        <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">
-                                            Print Salary
-                                        </button>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tbody>
-                            </tbody>
-                        </table>
+                </div>
+                <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0);">Add Salaries</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0);">All Salaries</a></li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row tab-content">
+                        <div id="list-view" class="tab-pane fade active show col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">All Salaries</h4>
+                                    <a href="{{ route('add-salary') }}" class="btn btn-primary">+Add new</a>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="example3" class="display" style="min-width: 845px">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>ID</th>
+                                                    <th>Title</th>
+                                                    <th>Name</th>
+                                                    <th>Department</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><img class="rounded-circle" width="35"
+                                                            src="images/profile/small/pic1.jpg" alt=""></td>
+                                                            <td>1</td>
+                                                            <td>SR.Teacher</td>
+                                                            <td>KAshan Shaikh</td>
+                                                            <td>Teacher</td>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="btn btn-sm btn-primary"><i
+                                                                class="la la-pencil"></i></a>
+                                                        <a href="javascript:void(0);" class="btn btn-sm btn-danger"><i
+                                                                class="la la-trash-o"></i></a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><img class="rounded-circle" width="35"
+                                                            src="images/profile/small/pic1.jpg" alt=""></td>
+                                                            <td>1</td>
+                                                            <td>SR.Teacher</td>
+                                                            <td>KAshan Shaikh</td>
+                                                            <td>Teacher</td>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="btn btn-sm btn-primary"><i
+                                                                class="la la-pencil"></i></a>
+                                                        <a href="javascript:void(0);" class="btn btn-sm btn-danger"><i
+                                                                class="la la-trash-o"></i></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-center">
 
-                {{-- @include('main_super_admin.dashboard.include.poweredby') --}}
-            </div>
         </div>
     </div>
-    <!-- Page Area End Here -->
+    <!--**********************************
+            Content body end
+        ***********************************-->
+    <!--**********************************
+            Footer start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.poweredby')
+    <!--**********************************
+            Footer end
+        ***********************************-->
+
+    <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+    <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
 </div>
-@include('institute_admin_panel.dashboard.include.footer')
-<script>
-    $(document).ready(function() {
-        $('.stock').click(function() {
-            var id = $(this).data('id');
-            $('#stock_id').val(id);
-        });
-    });
-    $('.stock').click(function() {
-        var id = $(this).data('id');
-        var stock = $(this).data('stock');
-        $('#stock_id').val(id);
-        $('#stock').val(stock);
-    });
-    $('#add_stock').on('submit', function(e) {
-        e.preventDefault();
-        var url = $(this).attr('action');
-        $.ajax({
-            method: 'POST',
-            url: url,
-            data: new FormData(this),
-            contentType: false,
-            processData: false,
-            async: false,
-        }).done(function(response) {
-            var message = response;
-            // $("#stock_message").html(message).show();
-            $("#stock_message").text(message).show();
+<!--**********************************
+        Main wrapper end
+    ***********************************-->
 
-            $('#exampleModalCenter').modal('show');
-        }).fail(function(xhr, status, error) {
-            console.error(error);
-        });
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        $('.usage').click(function() {
-            var id = $(this).data('id');
-            $('#usage_id').val(id);
-        });
-    });
+<!--**********************************
+        Scripts
+    ***********************************-->
+@include('campus_admin_panel.dashboard.include.footer')
 
-    $('#add_usage').on('submit', function(e) {
-        e.preventDefault();
-        var url = $(this).attr('action');
-        $.ajax({
-            method: 'POST',
-            url: url,
-            data: new FormData(this),
-            contentType: false,
-            processData: false,
-            async: false,
-        }).done(function(response) {
-            var message = response;
-            $("#usage_message").text(message).show();
 
-            // Get the updated available quantity from the response and update the table cell
-            var updatedAvailableQuantity = parseInt($('#stock').text()) - parseInt($('#usage').val());
-            $('#stock').text(updatedAvailableQuantity);
+</body>
 
-            $('#usageexampleModalCenter').modal('show');
-        }).fail(function(xhr, status, error) {
-            console.error(error);
-        });
-    });
-</script>
+</html>
