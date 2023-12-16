@@ -1,242 +1,137 @@
-@include('institute_admin_panel.dashboard.include.header')
-<style type="text/css">
-    .main-bg-cus {
-        background: #fff;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        padding: 10px 0;
-        border-radius: 8px;
-    }
-
-    .had-label h5 {
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .had-label h5 img {
-        width: 35px;
-        margin: 0px 10px;
-    }
-
-    .content-of-label {
-        display: flex;
-        padding: 0px 30px;
-    }
-
-    .content-of-label .img-cont {
-        width: 80px;
-        height: 80px;
-        padding: 10px;
-        border-radius: 50%;
-        margin: 0px 10px;
-
-    }
-
-    .content-of-label .img-cont img {
-        max-width: 100%;
-    }
-
-    .label-con {
-        padding: 10px 0px;
-    }
-
-    .label-con h4 {
-        letter-spacing: 0.1em;
-        font-weight: bold;
-    }
-
-    .label-con span {
-        background: blue;
-        color: #fff;
-        font-size: 10px;
-        border-radius: 3px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-transform: uppercase;
-        font-weight: bold;
-        padding: 0px 6px;
-    }
-
-    .teah-con {
-        display: flex;
-        column-gap: 5px;
-    }
-</style>
-
-
-
 @include('campus_admin_panel.dashboard.include.header')
-<!-- Preloader Start Here -->
-<div id="preloader"></div>
-<!-- Preloader End Here -->
-<div id="wrapper" class="wrapper bg-ash">
+<!--**********************************
+        Main wrapper start
+    ***********************************-->
+<div id="main-wrapper">
+    <!--**********************************
+            Nav header start
+        ***********************************-->
     @include('campus_admin_panel.dashboard.include.navbar')
-    <div class="dashboard-page-one">
-        <div class="dashboard-content-one">
-            <div class="breadcrumbs-area">
-            </div>
-            <div class="container">
-                <div class="dashboard-content-one">
-                    <div class="row">
-                        <div class="col-md-12 d-flex justify-content-end mt-4">
-                            <a href="{{ route('add-classTeacher') }}">
-                                <button type="button" class="btn btn-warning text-white mr-4 mb-3"
-                                    style="font-size: 14px">Add Class Teacher</button>
-                            </a>
-                            <a href="{{ route('add-SubjectTeacher') }}">
-                                <button type="button" class="btn btn-warning text-white mr-4 mb-3"
-                                    style="font-size: 14px">Add Subject Teacher</button>
-                            </a>
-                        </div>
+    <!--**********************************
+            Nav header end
+        ***********************************-->
+    <!--**********************************
+            Header start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.topbar')
+    <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+    <!--**********************************
+            Sidebar start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.sidebar')
+    <!--**********************************
+            Sidebar end
+        ***********************************-->
+    <!--**********************************
+            Content body start
+        ***********************************-->
+    <div class="content-body">
+        <!-- row -->
+        <div class="container-fluid">
+				    
+            <div class="row page-titles mx-0">
+                <div class="col-sm-6 p-md-0">
+                    <div class="welcome-text">
+                        <h4> Subject Teachers </h4>
                     </div>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="container-fluid py-5">
-                                <div class="row py-3">
-
-                                    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-                                        <div class="main-bg-cus">
-                                            <div class="had-label">
-                                                <h5><img src="/institute_login/images/teacher.png" alt=""> Class
-                                                    Teacher</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @foreach ($get_class_teachers as $get_class_teachers)
-                                        <div class="col-lg-6 col-md-12 col-sm-12 text-center py-3">
-                                            <div class="main-bg-cus">
-                                                <div class="content-of-label">
-                                                    <div class="img-cont">
-                                                        <img src="/institute_login/images/teacher.png" alt="">
-                                                    </div>
-                                                    <div class="label-con">
-                                                        <h4>{{ $get_class_teachers->teacher_name }}</h4>
-                                                        <div class="teah-con">
-                                                            <span>Class: {{ $get_class_teachers->class_name }}</span>
-                                                            <span>Section:
-                                                                {{ $get_class_teachers->section_name }}</span>
-                                                        </div>
-                                                        <!-- <span>content label</span> -->
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-
+                </div>
+                <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0);">All Subject Teachers</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0);">Add Subject Teacher</a></li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row tab-content">
+                        <div id="list-view" class="tab-pane fade active show col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title"></h4>
+                                    <a href="{{ route('add-SubjectTeacher') }}" class="btn btn-primary">+ Add new</a>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-                                        <div class="main-bg-cus">
-                                            <div class="had-label">
-                                                <h5><img src="/institute_login/images/teacher.png" alt="">
-                                                    Subject Teacher</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    @foreach ($get_subject_teachers as $get_subject_teacher)
-                                        <div class="col-lg-6 col-md-12 col-sm-12 text-center py-3">
-                                            <div class="main-bg-cus">
-                                                <div class="content-of-label">
-                                                    <div class="img-cont">
-                                                        <img src="/institute_login/images/teacher.png" alt="">
-                                                    </div>
-                                                    <div class="label-con">
-                                                        <h4>{{ $get_subject_teacher->teacher_name }}</h4>
-                                                        <div class="teah-con">
-                                                            <span>Class: {{ $get_subject_teacher->class_name }}</span>
-                                                            <span>Section:
-                                                                {{ $get_subject_teacher->section_name }}</span>
-                                                            <span class="subject-span">
+                                <div class="card-body">
+                                    <div class="row">
+                                        @foreach ($get_subject_teachers as $get_subject_teacher)
+                                        <div class="col-lg-4">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h2 class="card-title">Teacher: <span class="font-weight-bold">{{ $get_subject_teacher->teacher_name }}</span></h2>
+                                                </div>
+                                                <div class="card-body pb-0">
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item d-flex px-0 justify-content-between">
+                                                            <strong>Class</strong>
+                                                            <span class="mb-0">{{ $get_subject_teacher->class_name }}</span>
+                                                        </li>
+                                                        <li class="list-group-item d-flex px-0 justify-content-between">
+                                                            <strong>Section</strong>
+                                                            <span class="mb-0">{{ $get_subject_teacher->section_name }}</span>
+                                                        </li>
+                                                        <li class="list-group-item d-flex px-0 justify-content-between">
+                                                            <strong>Subjects</strong>
+                                                            <span class="mb-0">
                                                                 @php
                                                                     $subjectsArray = explode(' ', $get_subject_teacher->subjects);
                                                                     foreach ($subjectsArray as $subject) {
-                                                                        $randomColor = '#' . substr(md5(mt_rand()), 0, 6); // Generate a random color
-                                                                        echo '<span style="background-color: ' . $randomColor . ';">' . $subject . ' </span>';
+                                                                        echo '<span style="font-weight:bolder;">' . $subject . ' </span>';
                                                                     }
                                                                 @endphp
                                                             </span>
-                                                        </div>
-                                                    </div>
+                                                        </li>
+                                                        
+                                                    </ul>
                                                 </div>
+                                               
                                             </div>
                                         </div>
-                                    @endforeach
-
-
-
-
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
-
-
-
-
-
-
-
-
                         </div>
+                        
                     </div>
                 </div>
-
             </div>
-            <!-- Page Area End Here -->
+            
         </div>
-
-        @include('campus_admin_panel.dashboard.include.footer')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <script>
-            // Get all the elements with class "subject-span"
-            const subjectSpans = document.querySelectorAll(".subject-span");
-
-            // Define an array of colors
-            const colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff"];
-
-            // Loop through the elements and assign a random color
-            subjectSpans.forEach((span, index) => {
-                const randomColor = colors[index % colors.length];
-                span.style.backgroundColor = randomColor;
-            });
-        </script>
-
-        <!-- <div class="col-md-3 text-center">
-<a href="">
-    <div class="box-main-card">
-        <div class="card-content">
-            <img src="teacher/send-message-01.png" alt="">
-        </div>
-        <h5>Class Teacher</h5>
     </div>
-</a>
+    <!--**********************************
+            Content body end
+        ***********************************-->
+    <!--**********************************
+            Footer start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.poweredby')
+    <!--**********************************
+            Footer end
+        ***********************************-->
+
+    <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+    <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
 </div>
-<div class="col-md-3 text-center">
-<a href="{{ route('add-SubjectTeacher') }}">
-    <div class="box-main-card">
-        <div class="card-content">
-            <img src="teacher/recived-message-01.png" alt="">
-        </div>
-        <h5>Subject Teacher</h5>
-    </div>
-</a>
-</div> -->
+<!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+<!--**********************************
+        Scripts
+    ***********************************-->
+@include('campus_admin_panel.dashboard.include.footer')
+
+
+</body>
+</html>

@@ -1,186 +1,118 @@
-
 @include('campus_admin_panel.dashboard.include.header')
-<!-- Preloader Start Here -->
-<div id="preloader"></div>
-<!-- Preloader End Here -->
-<div id="wrapper" class="wrapper bg-ash">
-@include('campus_admin_panel.dashboard.include.navbar')
-    <div class="dashboard-page-one">
-        <div class="dashboard-content-one">
-            <div class="breadcrumbs-area">
-            </div>   
-            <div class="container-fluid">
-            <div class="dashboard-content-one">
-            <!-- Breadcubs Area Start Here -->
-            
-            <div class="row  d-flex justify-content-end">
-                <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group">
-                    <a href="{{ route('back-subjectlist') }}">
-                        <button type="submit" class="fw-btn-fill btn-gradient-yellow">
-                            Back
-                        </button>
-                    </a>
+<!--**********************************
+        Main wrapper start
+    ***********************************-->
+<div id="main-wrapper">
+    <!--**********************************
+            Nav header start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.navbar')
+    <!--**********************************
+            Nav header end
+        ***********************************-->
+    <!--**********************************
+            Header start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.topbar')
+    <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+    <!--**********************************
+            Sidebar start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.sidebar')
+    <!--**********************************
+            Sidebar end
+        ***********************************-->
+    <!--**********************************
+            Content body start
+        ***********************************-->
+    <div class="content-body">
+        <!-- row -->
+        <div class="container-fluid">
+            <div class="row page-titles mx-0">
+                <div class="col-sm-6 p-md-0">
+                    <div class="welcome-text">
+                        <h4>Add Subjects</h4>
+                    </div>
+                </div>
+                <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="#">All Subjects</a></li>
+                        <li class="breadcrumb-item active"><a href="#">Add Subjects</a></li>
+                    </ol>
                 </div>
             </div>
-            <!-- Breadcubs Area End Here -->
-            <!-- Admit Form Area Start Here -->
-            <div class="card height-auto">
-                <div class="card-body">
-                    @if (session('SubjectAdded'))
-                        <div class="alert alert-success alert-dismissible fade show">
-                            {{ session('SubjectAdded') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    @endif
-                    @if (session()->has('success-message-section'))
-                        <div class="alert alert-success">
-                            {{ session('success-message-section') }}
-                        </div>
-                    @endif
-                    @if ($errors->any())
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                    <div class="heading-layout1">
-                        <div class="item-title Add-student m-auto justify-content-center">
-                            <h3>Add Subject</h3>
-                        </div>
 
+            <div class="row">
+                <div class="col-xl-12 col-xxl-12 col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form class="new-added-form" action="{{ route('store-campus-subject') }}" method="POST">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Course</label>
+                                            <select name="class_name" class="form-control" id="select_class">
+                                                <option value="">Select a Course</option>
+                                                @foreach ($classes as $class)
+                                                    <option value="{{ $class->class_name }}">{{ $class->class_name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Subject</label>
+                                            <input type="text" name="subject" id="last_name" required placeholder="(i.e) Englishm Urdu, Sindhi" class="form-control" />
+                                            <span class="text-danger error-message" id="error-subject"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="button" class="btn btn-dark">Cencel</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-
-
-                    <!-- <form class="new-added-form" action="{{ route('store-campus-subject') }}" method="POST">
-                        @csrf
-                        <div class="row">
-                            <div class="col-xl-4 col-lg-6 col-12 form-group">
-                                <label>Class*</label>
-                                <select name="class_name" class="form-control" id="select_class">
-                                    <option value="">Select a Class</option>
-                                    @foreach ($classes as $class)
-                                        <option value="{{ $class->class_name }}">{{ $class->class_name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="col-xl-4 col-lg-6 col-12 form-group">
-                                <label>Section *</label>
-                                <select name="section_name" id="section_name_dropdown" class="form-control">
-                                    <option value="">Section</option>
-                                </select>
-                            </div>
-
-                            <div class="col-xl-4 col-lg-6 col-12 form-group">
-                                <label>Subject *</label>
-                                <input type="text" name="subject" id="last_name" required
-                                    placeholder="(i.e) Englishm Urdu, Sindhi" class="form-control" />
-                                <span class="text-danger error-message" id="error-subject"></span>
-                            </div>
-                        </div>
-
-                        <div class="row d-flex justify-content-center">
-                            <div class="mg-t-8">
-                                <button t ype="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">
-                                    Add
-                                </button>
-                            </div>
-
-                        </div>
                 </div>
-
-                </form> -->
-
-
-
-                <form class="new-added-form" action="{{ route('store-campus-subject') }}" method="POST">
-                        @csrf
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-6 col-12 form-group">
-                                <label>Course*</label>
-                                <select name="class_name" class="form-control" id="select_class">
-                                    <option value="">Select a Course</option>
-                                    @foreach ($classes as $class)
-                                        <option value="{{ $class->class_name }}">{{ $class->class_name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>  
-
-                            <!-- <div class="col-xl-4 col-lg-6 col-12 form-group">
-                                <label>Section *</label>
-                                <select name="section_name" id="section_name_dropdown" class="form-control">
-                                    <option value="">Section</option>
-                                </select>
-                            </div> -->
-
-                            <div class="col-xl-6 col-lg-6 col-12 form-group">
-                                <label>Subject *</label>
-                                <input type="text" name="subject" id="last_name" required
-                                    placeholder="(i.e) Englishm Urdu, Sindhi" class="form-control" />
-                                <span class="text-danger error-message" id="error-subject"></span>
-                            </div>
-                        </div>
-
-                        <div class="row d-flex justify-content-center">
-                            <div class="mg-t-8">
-                                <button t ype="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">
-                                    Add
-                                </button>
-                            </div>
-
-                        </div>
-                </div>
-
-                </form>
-
             </div>
         </div>
-       
     </div>
-    <!-- Page Area End Here -->
-</div>
+    <!--**********************************
+            Content body end
+        ***********************************-->
+    <!--**********************************
+            Footer start
+        ***********************************-->
+    @include('campus_admin_panel.dashboard.include.poweredby')
+    <!--**********************************
+            Footer end
+        ***********************************-->
 
+    <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+    <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+</div>
+<!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+<!--**********************************
+        Scripts
+    ***********************************-->
 @include('campus_admin_panel.dashboard.include.footer')
 
 
+</body>
 
-
-<!-- 
-<script>
-    $('#select_class').on('change', function() {
-        var class_name = $(this).val();
-
-        $.ajax({
-            url: '/class-wise-section',
-            method: 'get',
-            data: {
-                class_name: class_name,
-                _token: '{{ csrf_token() }}'
-            },
-
-
-            success: function(response) {
-                $("#section_name_dropdown").empty();
-                $.each(response, function(index, sectionName) {
-                    if ($("#section_name_dropdown option[value='" + sectionName + "']")
-                        .length === 0) {
-                        $("#section_name_dropdown").append('<option value="' + sectionName +
-                            '">' + sectionName + '</option>');
-                    }
-                });
-            },
-
-            error: function(xhr, status) {
-                console.log("Error: ", xhr, status);
-            }
-        });
-    });
-</script> -->
+</html>

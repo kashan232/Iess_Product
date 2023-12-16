@@ -73,6 +73,24 @@ class ClassController extends Controller
             'genderCounts' => $genderCounts,
         ]);
     }
+
+    public function all_sections(Request $request)
+    {
+        $pagename = 'View Classes';
+        $Institute_admin_id = $request->session()->get('Institute_admin_id');
+        $campus_id = $request->session()->get('campus_id');
+
+        $Class_Sections = Class_Section::where('institute_id', $Institute_admin_id)
+            ->where('campus_id', $campus_id)
+            ->get();
+        
+        $campusName = $request->session()->get('campus_name');
+        return view('campus_admin_panel.dashboard.Campus_General_Operations.generation_operation.classes.all_sections', [
+            'pagename' => $pagename,
+            'Class_Sections' => $Class_Sections,
+        ]);
+    }
+
     public function back_list(Request $request)
     {
         return redirect()->route('all-courses');

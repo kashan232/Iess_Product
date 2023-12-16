@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/new_template/css/style.css">
 	<link rel="stylesheet" href="/new_template/css/skin.css">
     <link href="/new_template/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/themify-icons/0.1.2/css/themify-icons.css">
 </head>
 <body>
 

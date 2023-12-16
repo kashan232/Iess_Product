@@ -4,7 +4,7 @@
             <li class="nav-label first">Main Menu</li>
             <li>
                 <a class="ai-icon" href="{{ route('campus-single-operation') }}" aria-expanded="false">
-                    <i class="la la-home"></i>
+                    <i class="ti-home"></i>
                     <span class="nav-text">Dashboard</span>
                 </a>
             </li>
@@ -96,16 +96,23 @@
             </li>
 
             <li>
-                <a href="javascript:void()" aria-expanded="false">
+                <a href="#" aria-expanded="false">
                     <i class="la la-users"></i>
                     <span class="nav-text">Results</span>
                 </a>
             </li>
 
             <li>
-                <a href="javascript:void()" aria-expanded="false">
+                <a href="{{ route('viewall-formers') }}" aria-expanded="false">
                     <i class="la la-users"></i>
                     <span class="nav-text">Former Students</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" aria-expanded="false">
+                    <i class="la la-users"></i>
+                    <span class="nav-text">Time Table</span>
                 </a>
             </li>
 
@@ -116,39 +123,34 @@
                     <span class="nav-text">Syllabus</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="all-professors.html">All Syllabus</a></li>
-                    <li><a href="add-professor.html">Add Syllabus</a></li>
+                    <li><a href="{{ route('all-syllabus') }}">All Syllabus</a></li>
+                    <li><a href="{{ route('add-syllabus') }}">Add Syllabus</a></li>
                 </ul>
             </li>
 
             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
                     <i class="la la-users"></i>
-                    <span class="nav-text">Course</span>
+                    <span class="nav-text">Academic Structure</span>
                 </a>
                 <ul aria-expanded="false">
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Course</a>
                         <ul aria-expanded="false">
-                            <li><a href="email-compose.html">All Course</a></li>
-                            <li><a href="email-inbox.html">Add Course</a></li>
+                            <li><a href="{{ route('all-courses') }}">All Course</a></li>
+                            <li><a href="{{ route('add-class') }}">Add Course</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Sections</a>
                         <ul aria-expanded="false">
-                            <li><a href="email-compose.html">All Sections</a></li>
-                            <li><a href="email-inbox.html">Add Section</a></li>
+                            <li><a href="{{ route('all-sections') }}">All Sections</a></li>
+                            <li><a href="{{ route('add-section') }}">Add Section</a></li>
                         </ul>
                     </li>
-                </ul>
-            </li>
-
-            <li>
-                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="la la-users"></i>
-                    <span class="nav-text">Subjects</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="all-professors.html">All Subjects</a></li>
-                    <li><a href="add-professor.html">Add Subjects</a></li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Subjects</a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('all-subjects') }}">All Subjects</a></li>
+                            <li><a href="{{ route('add-subject') }}">Add Subjects</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
 
@@ -158,8 +160,8 @@
                     <span class="nav-text">Manage Teachers</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="all-professors.html">Management Teachers</a></li>
-                    <li><a href="add-professor.html">Manage Teachers</a></li>
+                    <li><a href="{{ route('manage-teachers') }}">Subjects Teachers</a></li>
+                    <li><a href="{{ route('add-SubjectTeacher') }}">Add Subjects Teachers</a></li>
                 </ul>
             </li>
 

@@ -175,6 +175,7 @@ Route::get('/export-pdf', [InstituteViewAttendance::class, 'exportPDF'])->name('
 Route::get('/add-section', [ClassController::class, 'add_section'])->name('add-section');
 Route::get('/back-list', [ClassController::class, 'back_list'])->name('back-list');
 Route::get('/all-courses', [ClassController::class, 'all_courses'])->name('all-courses');
+Route::get('/all-sections', [ClassController::class, 'all_sections'])->name('all-sections');
 Route::get('/add-class', [ClassController::class, 'add_course'])->name('add-class');
 Route::get('/sections-view/{class_id}', [ClassController::class, 'sections_view'])->name('sections-view');
 Route::get('/add-course', [ClassController::class, 'add_course'])->name('add-course');

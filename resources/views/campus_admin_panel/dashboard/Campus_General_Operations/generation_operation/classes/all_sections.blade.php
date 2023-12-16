@@ -34,14 +34,14 @@
             <div class="row page-titles mx-0">
                 <div class="col-sm-6 p-md-0">
                     <div class="welcome-text">
-                        <h4> All Course</h4>
+                        <h4> All Sections</h4>
                     </div>
                 </div>
                 <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active"><a href="javascript:void(0);">All Course</a></li>
-                        <li class="breadcrumb-item active"><a href="javascript:void(0);">Add Course</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0);">All Sections</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0);">Add Section</a></li>
                     </ol>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title"></h4>
-                                    <a href="{{ route('add-class') }}" class="btn btn-primary">+ Add new</a>
+                                    <a href="{{ route('add-section') }}" class="btn btn-primary">+ Add new</a>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -61,46 +61,16 @@
                                             <thead>
                                                 <tr>
                                                     <th>S.No</th>
-                                                    <th>Course Batch</th>
                                                     <th>Course Name</th>
                                                     <th>Section</th>
-                                                    <th style="width:20%;">Students</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($all_classes as $class)
+                                                @foreach ($Class_Sections as $Sections)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $class->batch }}</td>
-                                                        <td>{{ $class->class_name }}</td>
-                                                        <td>
-                                                            <a href="{{ route('sections-view', ['class_id' => $class->id]) }}">
-                                                            <button type="button"
-                                                                class="btn btn-warning text-white mr-4 mb-3"
-                                                                style="font-size: 14px">Sections
-                                                            </button>
-                                                            </a>
-                                                        </td>
-                                                        <td>
-                                                            <div
-                                                                style="display: flex;justify-content: center;align-content: center;align-self: center;">
-                                                                <p
-                                                                    style="width:96%;background-color: #d0d0d0 !important;font-weight: bold;padding: 5px 0;">
-                                                                    {{ $studentCounts[$class->class_name] }} students</p>
-                                                            </div>
-                                                            <div style="display: flex;justify-content: space-around;">
-                                                                <p
-                                                                    style="width:45%;background-color: #d0d0d0 !important;font-size:18px;font-weight: bold;padding: 5px 0;">
-                                                                    <span><img src="assets/general_operations/graduated.png"
-                                                                            alt=""></span>&nbsp;{{ $genderCounts[$class->class_name]['male'] }}
-                                                                </p>
-                                                                <p
-                                                                    style="width:45%;background-color: #d0d0d0 !important;font-size:18px;font-weight: bold;padding: 5px 0;">
-                                                                    <span><img src="assets/general_operations/girl.png"
-                                                                            alt=""></span>&nbsp;{{ $genderCounts[$class->class_name]['female'] }}
-                                                                </p>
-                                                            </div>
-                                                        </td>												
+                                                        <td>{{ $Sections->class_name }}</td>
+                                                        <td>{{ $Sections->section_name }}</td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>

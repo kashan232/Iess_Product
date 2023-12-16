@@ -11525,7 +11525,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
       display: flex;
       flex-direction: column; }
       .dlabnav .metismenu > li a > i {
-        font-size: 1.125rem;
+        font-size: 16px;
         display: inline-block;
         vertical-align: middle;
         padding: 0 0.4375rem 0 0;
